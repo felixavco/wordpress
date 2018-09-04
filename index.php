@@ -1,0 +1,1 @@
+<h1>This is a wordpress Theme</h1>
