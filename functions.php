@@ -14,6 +14,9 @@
   //creates the dynamic navs
   function university_features() {
     add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');
+    add_image_size('pofessorLandscape', 300, 200, true);
+    add_image_size('pofessorPortait', 380, 450, true);
     //Create Menus
     register_nav_menu('headerMenuLocation', 'Header Menu Location');
     register_nav_menu('footerLocation', 'Footer Menu Location');
@@ -40,6 +43,14 @@
         )
       );
     }
+
+    if(!is_admin() AND is_post_type_archive('program') AND $query->is_main_query()){
+      $query->set('events_per_page', -1);
+      $query->set('orderby', 'title');
+      $query->set('order', 'ASC');
+    }
+
+
   }
 
   add_action('pre_get_posts', 'university_adjust_queries');

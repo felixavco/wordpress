@@ -34,7 +34,7 @@ get_header();
       )
     ));
 
-    while ($pastEvents->have_posts()) {
+    while ($pastEvents->have_posts()):
     $pastEvents->the_post();
     $eventDate = new DateTime(get_field('event_date'));
   ?>
@@ -52,7 +52,7 @@ get_header();
 
 
 <?php
-  }
+  endwhile;
   echo paginate_links(array(
     'total' => $pastEvents->max_num_pages
   ));

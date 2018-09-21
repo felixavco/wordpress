@@ -16,8 +16,7 @@ get_header();
 
   <div class="container container--narrow page-section">
   <?php 
-    while (have_posts()) {
-    the_post();
+    while (have_posts()): the_post();
     $eventDate = new DateTime(get_field('event_date'));
   ?>
 
@@ -34,7 +33,7 @@ get_header();
 
 
 <?php
-  }
+  endwhile;
   echo paginate_links();
 ?>
     <hr class="section-break">

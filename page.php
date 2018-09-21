@@ -19,7 +19,7 @@ while (have_posts()) {
 
     <?php
       $parent = wp_get_post_parent_id(get_the_ID());
-      if ($parent) {
+      if ($parent):
     ?>
 
     <div class="metabox metabox--position-up metabox--with-home-link">
@@ -27,7 +27,7 @@ while (have_posts()) {
     </div>
 
     <?php
-    }
+    endif;
     ?>
 
 
