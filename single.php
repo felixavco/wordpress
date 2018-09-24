@@ -2,16 +2,9 @@
 
   get_header();
   
-  while(have_posts()): the_post(); ?> 
-  <div class="page-banner">
-    <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('images/ocean.jpg'); ?>"></div>
-    <div class="page-banner__content container container--narrow">
-      <h1 class="page-banner__title"><?php the_title();?></h1>
-      <div class="page-banner__intro">
-        <p>DO NOT FORGET TO EDIT THIS SECTION</p>
-      </div>
-    </div>
-  </div>
+  while(have_posts()): the_post(); 
+  pageBanner();
+?> 
 
   <div class="container container--narrow page-section">
     <div class="metabox metabox--position-up metabox--with-home-link">
@@ -28,7 +21,6 @@
     </div>
   </div>
 
- 
 <?php
   endwhile;
 
