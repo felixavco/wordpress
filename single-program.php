@@ -93,7 +93,21 @@
           endwhile;
           wp_reset_postdata();
         endif;
-        ?>
+        
+        $relatedCampuses = get_field('related_campus');
+
+        if($relatedCampuses):
+          echo '<hr class="secction-break">';
+          echo '<h2 class="headline headline--medium">' . get_the_title() . ' is available at these campuses</h2>';
+
+          echo '<ul class="min-list link-list">';
+            foreach($relatedCampuses as $campus):
+              echo '<li><a href="'.get_the_permalink($campus).'">'. get_the_title($campus).'</a></li>';
+            endforeach;
+          echo '</ul>';
+        endif;
+
+    ?>
   </div>
 
  

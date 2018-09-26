@@ -14,10 +14,12 @@
         $lat = $mapLocation['lat'];
         $lng = $mapLocation['lng'];
       ?>
-        <div class="marker" data-lat="<?php echo $lat ?>" data-lng="<?php echo $lng ?>"></div>
+        <div class="marker" data-lat="<?php echo $lat ?>" data-lng="<?php echo $lng ?>">
+          <a href="<?php the_permalink() ?>"><h3><?php the_title() ?></h3></a>
+          <?php echo $mapLocation['address']?>
+        </div>
       <?php
         endwhile;
-        echo paginate_links();
       ?>
     </div>
   </div>
