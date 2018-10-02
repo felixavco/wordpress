@@ -44,8 +44,13 @@ class MyNotes {
       },
       url: `${universityData.root_url}/wp-json/wp/v2/note/${thisNote.data('id')}`,
       type: 'DELETE', 
-      success: (res) => thisNote.slideUp(),
-      error: (err) => console.log(err)
+      success: (res) => {
+        thisNote.slideUp()
+        if(res.userNoteCount < 5) {
+          $('.note-limit-message').removeClass('active');
+        }
+      },
+      error: (err) => {console.log(err)}
     });
   }
 
@@ -73,7 +78,7 @@ class MyNotes {
     var ourNewPost = {
       'title': $('.new-note-title').val(),
       'content': $('.new-note-body').val(),
-      'status': 'publish'
+      'status': 'private'
     }
 
     $.ajax({
@@ -95,7 +100,11 @@ class MyNotes {
           </li>
         `).prependTo('#my-notes').hide().slideDown();
       },
-      error: (err) => console.log(err)
+      error: (err) => {
+        if(err.responseText == "You have reached your Notes limit of 5") {
+          $('.note-limit-message').addClass('active');
+        }
+      }
     })
   }
 
